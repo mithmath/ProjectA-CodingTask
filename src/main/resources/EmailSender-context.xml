@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:component-scan base-package="projectA.Codingtask" />
+	<context:annotation-config />
+	<bean id="threadPoolManager" class="projectA.Codingtask.App.ThreadPoolManager">
+
+	</bean>
+	<bean id="fileReaderImpl" class="projectA.Codingtask.Service.FileReaderImpl">
+		<property name="fileReader" ref="csvFileReader" />
+	</bean>
+	<bean id="csvFileReader" class="projectA.Codingtask.Service.CSVFileReader" />
+
+	<bean id="emailSenderImpl" class="projectA.Codingtask.Service.EmailSenderImpl">
+		<property name="emailSender" ref="mockedEmailSender" />
+	</bean>
+	<bean id="mockedEmailSender" class="projectA.Codingtask.Service.MockedEmailSender" />
+	<bean id="config" class="projectA.Codingtask.App.Configuration" />
+
+</beans>
